@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+</div>
+{{#each tasks}}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{this.TaskName}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{this.Description}}</h6>
+        <p class="card-text"><b>Task Owner:</b> {{this.owner}} </p>
+        <p class="card-text"><b>Status:</b> {{this.Status}} </p>
+    </div>
+</div>
+{{/each}}

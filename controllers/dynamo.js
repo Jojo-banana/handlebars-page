@@ -137,6 +137,7 @@ module.exports.GetItem = (params) => new Promise(async (resolve) => {
  * @returns {Promise}                     
  */
 module.exports.PutItem = (params) => new Promise(async (resolve) => {
+    console.log('we are in putItem', params)
     var response = { success: false, status: 'unknown' };
     try {
         var r = await ddbDocClient.send(new PutCommand(params));

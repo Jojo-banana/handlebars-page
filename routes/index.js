@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const {PutItem} = require("../controllers/dynamo")
 const axios = require('axios');
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -22,10 +23,33 @@ router.get('/task', function (req, res, next) {
   res.render('task', { title: "Task" });
 });
 
-router.post('/task', function (req, res, next) {
+// router.post('/task', async function (req, res, next) {
+//   console.log('here is my formdata', req.body);
+//   var record = JSON.parse(JSON.stringify(req.body))
+//   record.ID = Date.now
+//   var params = {
+//     TableName: 'tasks',
+//     Item: record
+//   }
+//   var tmp = await PutItem(params)
+//   console.log('This item should have been inserted')
+//   res.redirect('/tasks')
+// });
+
+router.post('/task', async (req, res, next) => {
   console.log('here is my formdata', req.body);
-  // res.render('task', { title: "Task" });
-});
+  var record = JSON.parse(JSON.stringify(req.body))
+  record.ID = Date.now
+  var params = {
+    TableName: 'tasks',
+    Item: record
+  }
+  // checking our parameters
+  console.log('this is what we are trying to post', params)
+  var tmp = await PutItem(params)
+  console.log('This item should have been inserted')
+  res.redirect('/tasks')
+})
 
 router.get('/tasks', async (req, res, next) => {
   const tasks = await axios.get('api');

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { Scan } = require('../controllers/dynamo')
+const { Scan, PutItem } = require('../controllers/dynamo')
 /* GET users listing. */
 // {
 //     "TableName": "tasks",
@@ -24,7 +24,19 @@ router.get('/', async (req, res, next) => {
     res.send(response)
 })
 
-router.post('/task', (req, res, next)=>{
+router.post('/task', async (req, res, next)=>{
     console.log('here is our form data', req.body)
+    console.log('here is my formdata', req.body);
+    var record = JSON.parse(JSON.stringify(req.body))
+    record.id = Date.now().toString()
+    var params = {
+      TableName: 'tasks',
+      Item: record
+    }
+    // checking our parameters
+    console.log('this is what we are trying to post', params)
+    var tmp = await PutItem(params)
+    console.log('This item should have been inserted')
+    res.redirect('/tasks')
 });
 module.exports = router;

@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #f5189a">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-        <img src="images/cat.jpg" alt="cat" width="50" height="66"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <img src="images/cat.jpg" alt="cat" width="50" height="66"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -10,8 +11,17 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tasks
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/tasks/Joachim">Joachim's Tasks</a></li>
+            <li><a class="dropdown-item" href="/tasks/Riley">Riley's Tasks</a></li>
+            <li><a class="dropdown-item" href="/tasks/status/open">Open Tasks</a></li>
+            <li><a class="dropdown-item" href="/tasks/status/pending">Pending Tasks</a></li>
+            <li><a class="dropdown-item" href="/tasks/status/closed">Closed Tasks</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>

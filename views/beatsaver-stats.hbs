@@ -1,0 +1,33 @@
+{{!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>API Request Example</title>
+</head>
+<body>
+    <h1>API Request Example</h1>
+    <div id="output"></div>
+
+    <script>
+        function makeApiRequest() {
+            fetch('https://api.beatsaver.com/maps/uploader/4284241/0')
+                .then(response => {
+                    docs.forEach()
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => displayData(data))
+                .catch(error => console.error('Error:', error));
+        }
+
+        function displayData(data) {
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        }
+
+        // Call the function when the page loads or when an event triggers the request
+        makeApiRequest();
+    </script>
+</body>
+</html> --}}

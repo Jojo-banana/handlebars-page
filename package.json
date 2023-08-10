@@ -6,6 +6,10 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.370.0",
+    "@aws-sdk/lib-dynamodb": "^3.370.0",
+    "@aws-sdk/util-dynamodb": "^3.370.0",
+    "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

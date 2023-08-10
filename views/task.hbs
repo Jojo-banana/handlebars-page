@@ -1,0 +1,32 @@
+<form action="/api/task" method="POST">
+
+<div class="mb-3">
+    <label for="TaskName" class="form-label">Task Name</label>
+    <input name="TaskName" type="text" class="form-control" id="TaskName" placeholder="Name">
+</div>
+
+<div class="mb-3">
+    <label for="Description" class="form-label">Description</label>
+    <input name="Description" type="text" class="form-control" id="Description" placeholder="Description">
+</div>
+
+{{!-- <div class="mb-3">
+    <label for="owner" class="form-label">Owner</label>
+    <select id="owner" name="owner" class="form-select" aria-label="Owner">
+        <option selected>Choose an owner</option>
+        <option value="Joachim">Joachim</option>
+        <option value="Riley">Riley</option>
+    </select>
+</div> --}}
+
+{{!-- <div class="mb-3">
+    <label for="Statusv2" class="form-label">Status</label>
+    <select id="Statusv2" name="Statusv2" class="form-select" aria-label="Statusv2">
+        <option selected>Choose a status</option>
+        <option value="Open">Open</option>
+        <option value="Closed">Closed</option>
+    </select>
+</div> --}}
+
+<button type="button" class="btn btn-primary">Create Task</button>
+</form>

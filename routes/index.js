@@ -23,37 +23,13 @@ router.get('/task', function (req, res, next) {
   res.render('task', { title: "Task" });
 });
 
-// router.post('/task', async function (req, res, next) {
-//   console.log('here is my formdata', req.body);
-//   var record = JSON.parse(JSON.stringify(req.body))
-//   record.ID = Date.now
-//   var params = {
-//     TableName: 'tasks',
-//     Item: record
-//   }
-//   var tmp = await PutItem(params)
-//   console.log('This item should have been inserted')
-//   res.redirect('/tasks')
-// });
-
-router.post('/task', async (req, res, next) => {
-  console.log('here is my formdata', req.body);
-  var record = JSON.parse(JSON.stringify(req.body))
-  record.ID = Date.now
-  var params = {
-    TableName: 'tasks',
-    Item: record
-  }
-  // checking our parameters
-  console.log('this is what we are trying to post', params)
-  var tmp = await PutItem(params)
-  console.log('This item should have been inserted')
-  res.redirect('/tasks')
-})
+router.get('task/:id', async(req, res, next) => {
+  
+});
 
 router.get('/tasks', async (req, res, next) => {
   const tasks = await axios.get('api');
-  console.log('here are taks', tasks.data);
+  // console.log('here are taks', tasks.data);
   if (tasks.data.success) {
     var response = tasks.data.data;
   } else {
@@ -64,7 +40,7 @@ router.get('/tasks', async (req, res, next) => {
 });
 
 router.get('/tasks/:user', async (req, res, next) => {
-  const tasks = await axios.get(`api?owner=${req.params.user}`);
+  const tasks = await axios.get(`api?Owner=${req.params.user}`);
   console.log('here are taks', tasks.data);
   if (tasks.data.success) {
     var response = tasks.data.data;
@@ -74,5 +50,23 @@ router.get('/tasks/:user', async (req, res, next) => {
   console.log(response);
   res.render('tasks', { title: "Tasks", tasks: response });
 });
+
+router.get('/updatetask/:id', async (req, res, next) =>{
+  const task = await axios.get('/api/task/' + req.params.id);
+  console.log('here is task', task)
+  var data = task.data.data
+  var info = JSON.parse(JSON.stringify(data))
+  info.title = 'UpdateText'
+  res.render('updatetask', info)
+})
+
+router.get('/beatsaver', async(req, res, next)=>{
+  var userInfo = await axios.get('/api/beatsaver/4284241');
+  var playlistInfo = await axios.get('/api/beatsaver/playlist/4284241');
+  userInfo = userInfo.data;
+  userInfo.playlist = playlistInfo.data;
+  console.log(userInfo)
+  res.render('beatsaver', userInfo)
+})
 
 module.exports = router;

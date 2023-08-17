@@ -60,9 +60,9 @@ router.get('/updatetask/:id', async (req, res, next) =>{
   res.render('updatetask', info)
 })
 
-router.get('/beatsaver', async(req, res, next)=>{
-  var userInfo = await axios.get('/api/beatsaver/4284241');
-  var playlistInfo = await axios.get('/api/beatsaver/playlist/4284241');
+router.get('/beatsaver/:id', async(req, res, next)=>{
+  var userInfo = await axios.get('/api/beatsaver/' + req.params.id);
+  var playlistInfo = await axios.get('/api/beatsaver/playlist/' + req.params.id);
   userInfo = userInfo.data;
   userInfo.playlist = playlistInfo.data;
   console.log(userInfo)
